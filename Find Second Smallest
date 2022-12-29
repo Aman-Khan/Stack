@@ -1,0 +1,22 @@
+    vector<int> help_classmate(vector<int> arr, int n) 
+    {   vector<int> ans(n);
+        stack<int> st;
+        st.push(-1);
+        int j=n-1;
+        while(j>=0){
+            if(st.top()<arr[j]){
+                ans[n-1-j]=st.top();
+                st.push(arr[j]);
+            }
+            else{
+                while(st.top()>=arr[j]){
+                    st.pop();
+                }
+                ans[n-1-j]=st.top();
+                st.push(arr[j]);
+            }
+            j--;
+        }
+        reverse(ans.begin(), ans.end());
+        return ans;
+    }
